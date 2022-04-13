@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>SVG DOM Manipulation</title>
+</head>
+
+<body>
+    <!-- 
+        // for refrance
+        <svg width="250" height="250">
+            <rect x="50" y="50" width="20" height="20"></rect>
+        </svg>
+     -->
+    <script>
+        let svg = d3.select("body").append("svg");
+        svg.attr("width", 250);
+        svg.attr("height", 250);
+
+        var rect = svg.append("rect");
+
+        rect.attr("x", 50);
+        rect.attr("y", 50);
+        rect.attr("width", 20);
+        rect.attr("height", 20);
+
+        // method chaining
+        let svg2 = d3.select("body").append("svg").attr("width", 250).attr("height", 250);
+
+        let rect2 = svg.append("rect").attr("x", 200).attr("y", 50).attr("width", 20).attr("height", 20);
+    </script>
+</body>
+
+</html>

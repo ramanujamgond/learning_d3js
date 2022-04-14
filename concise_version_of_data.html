@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Concise Version Of Data Visualization</title>
+</head>
+
+<body>
+    <div id="data"></div>
+
+    <script>
+        let data = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        let scale = d3.scaleLinear()
+            .domain([1, 8])   // Data space
+            .range([0, 400]); // Pixel Space
+
+        let svg = d3.select("#data").append("svg")
+            .attr("width", 450)
+            .attr("height", 450);
+
+        let reacts = svg.selectAll("rect").data(data);
+
+        reacts.enter().append("rect")
+            .attr("x", scale)
+            .attr("y", 50)
+            .attr("width", 20)
+            .attr("height", 20);
+    </script>
+</body>
+
+</html>

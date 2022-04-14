@@ -10,11 +10,23 @@
 </head>
 
 <body>
+    <div id="box"></div>
+    <div id="circle"></div>
     <script>
         let data = [1, 2, 3, 4, 5];
-        let scale = d3.scale.linear().domain([1, 5]).range([0, 200]);
+        let scale = d3.scaleLinear().domain([1, 5]).range([0, 200]);
+        // .domain - Data Space
+        // .range - Pixel Space
 
-        console.log(scale);
+        let svg = d3.select("#box").append("svg").attr("width", 250).attr("height", 250);
+
+        svg.selectAll("rect").data(data).enter().append("rect").attr("x", function (d) { return scale(d); }).attr("y", 50).attr("width", 20).attr("height", 20);
+
+        let svg2 = d3.select("#circle").append("svg").attr("width", 250).attr("height", 250);
+
+        // svg2.selectAll("circle").data(data).enter().append("circle").attr("cx", function (d) { return scale(d); }).attr("cy", 50).attr("r", 20);
+
+        svg2.selectAll("circle").data(data).enter().append("circle").attr("cx", scale).attr("cy", 50).attr("r", 20);
 
     </script>
 </body>
